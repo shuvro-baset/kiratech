@@ -3,13 +3,13 @@ from rest_framework import serializers
 from .models import Inventory, Supplier
 
 
-class SupplierSerializer(serializers.HyperlinkedModelSerializer):
+class SupplierSerializer(serializers.ModelSerializer):
     class Meta:
         model = Supplier
-        fields = ('name',)
+        fields = '__all__'
 
 
-class InventorySerializer(serializers.HyperlinkedModelSerializer):
+class InventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inventory
-        fields = ('name', 'description', 'note', 'stock', 'availability', 'supplier')
+        fields ='__all__'
