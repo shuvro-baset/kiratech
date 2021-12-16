@@ -12,6 +12,17 @@ class InventoryViewSet(viewsets.ModelViewSet):
     queryset = Inventory.objects.all().order_by('name')
     serializer_class = InventorySerializer
 
+    def get_queryset(self):
+        name = self.request.query_params.get('name')
+        print(name)
+        if name:
+            return Inventory.objects.filter(name=name)
+        else:
+            return Inventory.objects.all()
+
+    def get_serializer_context(self):
+        return {'request': self.request}
+
 
 class SupplierViewSet(viewsets.ModelViewSet):
     queryset = Supplier.objects.all().order_by('name')
