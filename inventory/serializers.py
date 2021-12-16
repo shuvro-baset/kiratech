@@ -10,6 +10,10 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 
 class InventorySerializer(serializers.ModelSerializer):
+    # supplier = serializers.SerializerMethodField()
     class Meta:
         model = Inventory
-        fields ='__all__'
+        fields = ('name', 'description', 'note', 'stock', 'availability', 'supplier')
+
+    # def get_supplier(self, obj):
+    #     return obj.supplier if obj.supplier else []
