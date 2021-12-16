@@ -16,7 +16,7 @@ class Inventory(models.Model):
     note = models.TextField()
     stock = models.IntegerField()
     availability = models.BooleanField(default=False)
-    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE)
+    supplier = models.ManyToManyField(Supplier,  null=True, blank=True)
 
     def __str__(self):
         return self.name
