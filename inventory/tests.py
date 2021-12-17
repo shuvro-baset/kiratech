@@ -1,9 +1,9 @@
-# import json
-# from django.urls import reverse
-# from rest_framework.test import APITestCase
-# from rest_framework import status
-# from inventory.serializers import InventorySerializer
-# from inventory.models import Inventory, Supplier
+import json
+from django.urls import reverse
+from rest_framework.test import APITestCase, APIClient
+from rest_framework import status
+from inventory.serializers import InventorySerializer
+from inventory.models import Inventory, Supplier
 #
 # #
 # # class CreateInventoryViewSetTestCase(APITestCase):
@@ -25,7 +25,7 @@
 #     # list_url = reverse("inventory")
 #     data = Inventory.objects.all()
 #     def inventory_list(self):
-#         response = self.client.get("api/inventory", data)
+#         response = self.client.get("api/inventory")
 #         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 from django.urls import include, path, reverse
@@ -35,10 +35,10 @@ class AccountTests(APITestCase, URLPatternsTestCase):
     urlpatterns = [
         path('api/', include('inventory.urls')),
     ]
-
     def test_create_inventory(self):
 
-        url = "api/inventory"
-        response = self.client.get(url, format='json')
+        url = reverse('inventory:inventory')
+        response = self.client.get(url)
+        print("alsd", response.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 1)
+        self.assertGreater(len(response.data), 1)
