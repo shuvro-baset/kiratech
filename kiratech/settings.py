@@ -53,11 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'kiratech.urls'
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': (
-    #     'rest_framework.authentication.TokenAuthentication',
-    # ),
-    # 'DEFAULT_PERMISSION_CLASSES': (
-    #     'rest_framework.permissions.IsAuthenticated',),
+
 
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
@@ -66,17 +62,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework.parsers.JSONParser',
     ),
-    # 'DEFAULT_PAGINATION_CLASS': 'core.api.pagination.oa_pagination.OAStandardPageNumberPagination',
-    # 'PAGE_SIZE': 20,
-    # 'DEFAULT_METADATA_CLASS': None,
-    # 'DEFAULT_THROTTLE_CLASSES': (
-    #     'rest_framework.throttling.AnonRateThrottle',
-    #     'rest_framework.throttling.UserRateThrottle'
-    # ),
-    # 'DEFAULT_THROTTLE_RATES': {
-    #     'anon': '1/hour',
-    #     'user': '30/hour'
-    # }
+
 }
 TEMPLATES = [
     {
